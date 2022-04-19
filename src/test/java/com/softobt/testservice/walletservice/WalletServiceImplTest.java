@@ -25,16 +25,49 @@ public class WalletServiceImplTest {
     @Test
     public void testCreditWith10Naira(){
         Wallet wallet = new Wallet();
-        String response = walletService.creditWallet(wallet,500L);
+        String response = walletService.creditWallet(wallet,1000L);
         Assert.assertEquals("Credit was successful, balance is NGN10.00",response);
     }
 
     @Test
     public void testSuccessful10NairaDebit(){
         Wallet wallet = new Wallet();
-        String response = "";
+        String response = walletService.debitWallet(wallet,0L);
         Assert.assertEquals("Debit was successful, balance is NGN0.00",response);
     }
+
+    @Test
+    public void testUnsucessful10NairaDebit(){
+        Wallet wallet = new Wallet();
+        String response = walletService.debitWallet(wallet,1000L);
+        Assert.assertEquals("Wallet Balance is insufficient",response);
+    }
+
+    @Test
+    public void testCreditWithMinus100Naira(){
+        Wallet wallet = new Wallet();
+        String response = walletService.creditWallet(wallet, -10000L);
+        Assert.assertEquals("Credit amount is invalid",response);
+    }
+
+    @Test
+    public void testDebitWithMinus200Naira(){
+        Wallet wallet = new Wallet();
+        String response = walletService.debitWallet(wallet, -20000L);
+        Assert.assertEquals("Debit amount is invalid",response);
+    }
+
+    @Test
+    public void testCalculateBalance(){
+        Wallet wallet = new Wallet();
+        String response = walletService.calculateBalance();
+        Assert.assertEquals("Wallet balance is NGN315.45",response);
+    }
+
+
+
+
+
 
     /**
      * 1 - Create test for unsuccessful NGN10 debit due to insufficient balance
