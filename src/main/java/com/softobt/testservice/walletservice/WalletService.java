@@ -10,6 +10,5 @@ public interface WalletService {
      String creditWallet(Wallet wallet, Long minorAmount);
      String debitWallet(Wallet wallet,Long minorAmount);
      String getBalance(Wallet wallet);
-     String calculateBalance();
 
 }

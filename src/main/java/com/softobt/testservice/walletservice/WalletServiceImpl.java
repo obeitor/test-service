@@ -26,14 +26,8 @@ public class WalletServiceImpl implements WalletService {
         return "Wallet balance is " + wallet.getBalance();
     }
 
-    @Override
-    public String calculateBalance(){
-        Wallet account1 = new Wallet();
-        creditWallet(account1, 50000L);
-        debitWallet(account1, 20000L);
-        creditWallet(account1, 1545L);
-        return getBalance(account1);
-    }
+
+
 
 
 }

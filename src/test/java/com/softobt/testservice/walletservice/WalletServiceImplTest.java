@@ -60,8 +60,11 @@ public class WalletServiceImplTest {
     @Test
     public void testCalculateBalance(){
         Wallet wallet = new Wallet();
-        String response = walletService.calculateBalance();
-        Assert.assertEquals("Wallet balance is NGN315.45",response);
+        String creditAccount = walletService.creditWallet(wallet,50000L);
+        String debitAccount = walletService.debitWallet(wallet,20000L);
+        String creditAccount1 = walletService.creditWallet(wallet,1545L);
+        String balance = walletService.getBalance(wallet);
+        Assert.assertEquals("Wallet balance is NGN315.45",balance);
     }
 
 
